@@ -12,7 +12,11 @@ describe('bowling', function () {
     })
 
     it('has spare set as false by dafult', function () {
-      expect(game.isSpare).toEqual(false)
+      expect(game._isSpare).toEqual(false)
+    })
+
+    it('has strike set as false by dafult', function () {
+      expect(game._isStrike).toEqual(false)
     })
   })
 
@@ -24,12 +28,12 @@ describe('bowling', function () {
 
     it('Knows when there is a spare', function () {
       game.shots(5, 5)
-      expect(game.isSpare).toEqual(true)
+      expect(game._isSpare).toEqual(true)
     })
 
     it('Knows when there is NOT a spare', function () {
       game.shots(5, 4)
-      expect(game.isSpare).toEqual(false)
+      expect(game._isSpare).toEqual(false)
     })
 
     it('Knows when the previous was a spare', function () {
@@ -43,6 +47,16 @@ describe('bowling', function () {
       game.shots(2, 3)
       game.shots(2, 3)
       expect(game.totalscore).toEqual(22)
+    })
+
+    it('Knows when there is a strike', function () {
+      game.shots(10, 0)
+      expect(game._isStrike).toEqual(true)
+    })
+
+    it('Knows the difference between spare & strike', function () {
+      game.shots(10, 0)
+      expect(game._isSpare).toEqual(false)
     })
 
     it('Adds with multiples shots', function () {
