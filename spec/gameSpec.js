@@ -32,6 +32,19 @@ describe('bowling', function () {
       expect(game.isSpare).toEqual(false)
     })
 
+    it('Knows when the previous was a spare', function () {
+      game.shots(5, 5)
+      game.shots(2, 3)
+      expect(game.totalscore).toEqual(17)
+    })
+
+    it('Knows when the previous was NOT a spare', function () {
+      game.shots(5, 5)
+      game.shots(2, 3)
+      game.shots(2, 3)
+      expect(game.totalscore).toEqual(22)
+    })
+
     it('Adds with multiples shots', function () {
       game.shots(2, 5)
       game.shots(2, 5)
