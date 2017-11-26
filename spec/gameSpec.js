@@ -10,6 +10,10 @@ describe('bowling', function () {
     it('has a total score', function () {
       expect(game.totalscore).toEqual(0)
     })
+
+    it('has spare set as false by dafult', function () {
+      expect(game.isSpare).toEqual(false)
+    })
   })
 
   describe('When entering 2 scores', function () {
@@ -17,6 +21,17 @@ describe('bowling', function () {
       game.shots(2, 5)
       expect(game.totalscore).toEqual(7)
     })
+
+    it('Knows when there is a spare', function () {
+      game.shots(5, 5)
+      expect(game.isSpare).toEqual(true)
+    })
+
+    it('Knows when there is NOT a spare', function () {
+      game.shots(5, 4)
+      expect(game.isSpare).toEqual(false)
+    })
+
     it('Adds with multiples shots', function () {
       game.shots(2, 5)
       game.shots(2, 5)

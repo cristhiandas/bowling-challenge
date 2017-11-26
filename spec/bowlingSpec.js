@@ -7,10 +7,6 @@ describe('bowling', function () {
   })
 
   describe('When initializing', function () {
-    it('Have frames', function () {
-      expect(bowlingscore.frames).toEqual(10)
-    })
-
     it('Have have strike as false', function () {
       expect(bowlingscore.isStrike).toEqual(false)
     })
