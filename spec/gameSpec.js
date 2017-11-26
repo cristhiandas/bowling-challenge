@@ -59,6 +59,26 @@ describe('bowling', function () {
       expect(game._isSpare).toEqual(false)
     })
 
+    it('Knows when the previous shot was a strike', function () {
+      game.shots(10, 0)
+      game.shots(5,1)
+      expect(game.totalscore).toEqual(22)
+    })
+
+    it('Knows when the previous shot was NOT a strike', function () {
+      game.shots(10, 0)
+      game.shots(5, 1)
+      game.shots(0, 1)
+      expect(game.totalscore).toEqual(23)
+    })
+
+    it('Knows when it has strikes in a row', function () {
+      game.shots(10, 0)
+      game.shots(10, 0)
+      game.shots(0, 1)
+      expect(game.totalscore).toEqual(22)
+    })
+
     it('Adds with multiples shots', function () {
       game.shots(2, 5)
       game.shots(2, 5)
