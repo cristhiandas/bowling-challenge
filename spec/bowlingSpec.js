@@ -15,9 +15,6 @@ describe('bowling', function () {
       expect(bowlingscore.isStrike).toEqual(false)
     })
 
-    it('Have have spare as false', function () {
-      expect(bowlingscore.isSpare).toEqual(false)
-    })
   })
 
   describe('When doing a first shot', function () {
